@@ -9,6 +9,11 @@ export const FRAGMENT_PRODUCT = gql`
         photo {
             url
         }
+        category {
+            id
+            name
+        }
         price
+        createdAt
     }
 `;

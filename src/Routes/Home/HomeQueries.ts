@@ -2,11 +2,11 @@ import { gql } from "apollo-boost";
 import { FRAGMENT_PRODUCT } from "../../fragment";
 
 export const GET_PRODUCTS = gql`
-    {
+    query getProducts($id: ID) {
         AllProducts: products {
             ...ProductItems
         }
-        onSaleProducts: products (where: { onSale: true }) {
+        Products: products (where: { category_some: {id: $id} }) {
             ...ProductItems
         }
     }

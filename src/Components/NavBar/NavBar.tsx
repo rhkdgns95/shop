@@ -1,7 +1,6 @@
 import React from "react";
 import styled from "../../Styles/typed-components";
-
-interface IProps extends IGetCategoriesResponse {}
+import Header from "../Header";
 
 const Container =  styled.div`
     
@@ -20,13 +19,29 @@ const Button = styled.button`
         margin-left: 10px;
     }
 `;
+interface IProps extends IGetCategoriesResponse {
+    leftMenu: any;
+    rightMenu: any;
+    centerMenu: any;
+    onClickCategory: (id: string) => any;
+}
 const NavBar: React.FC<IProps> = ({
-    categories
+    categories,
+    leftMenu,
+    rightMenu,
+    centerMenu,
+    onClickCategory
 }) => (
     <Container>
+        <Header 
+            leftMenu={leftMenu}
+            centerMenu={centerMenu}
+            rightMenu={rightMenu}
+        />
         <Wrapper>
+            <Button onClick={e => onClickCategory("")}>ALL</Button>
         {
-            categories.map(item => <Button>{item.name}</Button>)
+            categories.map(item => <Button key={item.id} onClick={e => onClickCategory(item.id)}>{item.name}</Button>)
         }
         </Wrapper>
     </Container>

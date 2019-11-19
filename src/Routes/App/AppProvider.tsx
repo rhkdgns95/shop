@@ -1,7 +1,6 @@
 import React from "react";
 import { useQuery } from "react-apollo";
 import { GET_CATEGORIES } from "./AppQueries";
-import NavBar from "../../Components/NavBar";
 
 interface IContext {
     categoriesData: IGetCategoriesResponse | undefined
@@ -34,10 +33,6 @@ const AppProvider: React.FC<any> = ({
     const data = useFetch();
     return (
         <AppContext.Provider { ...data }>
-            {
-                data.value &&
-                data.value.categoriesData && <NavBar categories={data.value.categoriesData.categories}/>
-            }
             {
                 children
             }

@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Switch, Redirect, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Redirect, Route, Router } from "react-router-dom";
 import Home from '../Home';
 import AppProvider from './AppProvider';
 
@@ -13,7 +13,8 @@ const App = () => (
 
 const AppContainer = () => (
     <Switch>
-        <Route to={"/"} component={Home} exact={true}/>
+        <Route path={"/"} component={Home} exact/>
+        <Route path={"/product/:product_id"} component={Home} />
         <Redirect from={"*"} to={"/"} />
     </Switch>
 )

@@ -14,6 +14,7 @@ export const GlobalStyles = createGlobalStyle`
     ul, li, a, p {
         padding: 0;
         margin: 0;
+        text-decoration: none;
         list-style: none;
         color: inherit;
     }

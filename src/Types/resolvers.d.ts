@@ -6,13 +6,21 @@ type T_Products = {
     photo: {
         url: string
     },
-    price: string
+    price: number,
+    createdAt: string
+    category: Array<T_Category>
 };
-
-interface IGetProductsResponse {
-    AllProducts: Array<T_Products>
+type T_Category = {
+    id: string;
+    name: string;
 }
-
+interface IGetProductsResponse {
+    AllProducts: Array<T_Products>;
+    Products: Array<T_Products>;
+}
+interface IGetProductsQueryVariables {
+    id: string | undefined
+};
 type T_Categories = {
     id: string;
     name: string;
