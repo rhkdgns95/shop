@@ -45,7 +45,7 @@ const HomePresenter: React.FC<IProps> = ({
                         onClickCategory={onClickCategory}
                         leftMenu={
                             <Button 
-                                value={"search"}
+                                value={"Search"}
                                 path={"/search"}
                             />
                         }
@@ -54,7 +54,7 @@ const HomePresenter: React.FC<IProps> = ({
                         }
                         rightMenu={
                             <Button
-                                value={"cart"}
+                                value={"Cart"}
                                 path={"/cart"}
                             />
                         }

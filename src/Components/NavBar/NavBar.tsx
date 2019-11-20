@@ -39,7 +39,9 @@ const NavBar: React.FC<IProps> = ({
             rightMenu={rightMenu}
         />
         <Wrapper>
-            <Button onClick={e => onClickCategory("")}>ALL</Button>
+        {
+            categories.length > 0 && <Button onClick={e => onClickCategory("")}>ALL</Button>
+        }
         {
             categories.map(item => <Button key={item.id} onClick={e => onClickCategory(item.id)}>{item.name}</Button>)
         }

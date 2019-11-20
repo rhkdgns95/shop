@@ -25,7 +25,12 @@ type T_Categories = {
     id: string;
     name: string;
 }
-
 interface IGetCategoriesResponse {
     categories: Array<T_Categories>
+}
+interface IGetProductResponse {
+    product: T_Products | undefined;
+}
+interface IGetProductQueryVariables {
+    id: string;
 }

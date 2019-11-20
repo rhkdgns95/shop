@@ -4,6 +4,9 @@ export const GlobalStyles = createGlobalStyle`
     * {
         box-sizing: border-box;
     }
+    html {
+        overflow-y: scroll;
+    }
     html, body {
         margin: 0;
         padding: 0;

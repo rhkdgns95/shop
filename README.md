@@ -6,6 +6,7 @@
 - [x] Add ApolloProvider
 - [x] Add React Router, Add navigatonbar
 - [x] Add Navigation(Selected Button), Add Card PhotoImage
+- [x] Products Detail Pages.
 
 ## 2. Install
 - 2.1) yarn create react-app . --typescript
