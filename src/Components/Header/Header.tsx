@@ -6,8 +6,9 @@ const Container = styled.div`
 `;
 const Wrapper = styled.div`
     padding: 40px 0;
+    width: 100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
 `;
 const Menu = styled.div`
     display: flex;

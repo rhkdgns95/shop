@@ -1,9 +1,14 @@
 import React from "react";
 import styled from "../../Styles/typed-components";
 import Header from "../Header";
+import NavigationButton from "../NavigationButton";
+import { useHomeContext } from "../../Routes/Home/HomeProvider";
 
 const Container =  styled.div`
     
+`;
+const Box = styled.div`
+    width: 100%;
 `;
 const Wrapper = styled.div`
     margin: 10px 0;
@@ -11,14 +16,15 @@ const Wrapper = styled.div`
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
-`;
-
-const Button = styled.button`
-    padding: 10px 12.5px;
-    &:not(:nth-of-type(1)) {
-        margin-left: 10px;
+    @media(max-width: 800px) {
+        flex: 2;
+        & > div {
+            flex: 1;
+            margin-bottom: 10px;
+        }
     }
 `;
+
 interface IProps extends IGetCategoriesResponse {
     leftMenu: any;
     rightMenu: any;
@@ -31,22 +37,27 @@ const NavBar: React.FC<IProps> = ({
     rightMenu,
     centerMenu,
     onClickCategory
-}) => (
-    <Container>
-        <Header 
-            leftMenu={leftMenu}
-            centerMenu={centerMenu}
-            rightMenu={rightMenu}
-        />
-        <Wrapper>
-        {
-            categories.length > 0 && <Button onClick={e => onClickCategory("")}>ALL</Button>
-        }
-        {
-            categories.map(item => <Button key={item.id} onClick={e => onClickCategory(item.id)}>{item.name}</Button>)
-        }
-        </Wrapper>
-    </Container>
-);
+}) => {
+    const { categoryId } = useHomeContext();
+    return (
+        <Container className={"row"}>
+            <Box>
+                <Header 
+                    leftMenu={leftMenu}
+                    centerMenu={centerMenu}
+                    rightMenu={rightMenu}
+                />
+                <Wrapper>
+                {
+                    categories.length > 0 && <NavigationButton className={categoryId === "" ? "active" : ""} id={""} onClick={onClickCategory} value={"ALL"}/>
+                }
+                {
+                    categories.map(item => <NavigationButton className={categoryId === item.id ? "active" : ""}key={item.id} id={item.id} onClick={onClickCategory} value={item.name}/> )
+                }
+                </Wrapper>
+            </Box>
+        </Container>
+    )
+}
 
 export default NavBar;

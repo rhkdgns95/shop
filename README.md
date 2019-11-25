@@ -8,6 +8,7 @@
 - [x] Add Navigation(Selected Button), Add Card PhotoImage
 - [x] Products Detail Pages
 - [x] ProductContainer - Pagination Similarly Products, AppProvider - Add Progressbar.
+- [x] NavBar - Navigation Button, Add row class.
 
 
 ## 2. Install
