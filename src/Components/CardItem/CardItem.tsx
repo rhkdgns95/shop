@@ -58,6 +58,7 @@ interface IProps {
     price: string;
     createdAt: string;
     category: string;
+    onClick: (data: boolean) => {};
 }
 const CardItem: React.FC<IProps> = ({
     className,
@@ -67,10 +68,11 @@ const CardItem: React.FC<IProps> = ({
     price,
     name,
     category,
-    createdAt
+    createdAt,
+    onClick
 }) => (
     <Container className={className}>
-        <DetailLink to={`/product/${id}`}>
+        <DetailLink to={`/product/${id}`} onClick={ e => onClick(true) }>
             <Wrapper>
                 <PhotoBox>
                     <Photo src={imgPath}/>

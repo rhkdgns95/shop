@@ -32,7 +32,7 @@ interface IProps {
 const HomePresenter: React.FC<IProps> = ({
     products
 }) => {
-    const { categoriesData } = useAppContext();
+    const { categoriesData, handleProgress } = useAppContext();
     const { onClickCategory } = useHomeContext();
     return (
         <Container>
@@ -75,7 +75,8 @@ const HomePresenter: React.FC<IProps> = ({
                             category={product.category.map(category => category.name) + ""}
                             imgPath={product.photo.url}
                             price={product.price + ""}
-                            id={product.id}                            
+                            id={product.id}
+                            onClick={handleProgress}
                             />
                         )
                     }

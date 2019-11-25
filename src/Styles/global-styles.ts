@@ -21,5 +21,14 @@ export const GlobalStyles = createGlobalStyle`
         list-style: none;
         color: inherit;
     }
-    
+    .row {
+        max-width: 1100px;
+        margin: 0 auto;
+        width: 100%;
+        display: flex;
+        flex-flow: row wrap;
+        @media(max-width: 800px) {
+            width: 90%;
+        }
+    }
 `;

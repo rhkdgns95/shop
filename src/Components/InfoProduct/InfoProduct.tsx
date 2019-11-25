@@ -8,7 +8,7 @@ const Wrapper = styled.div`
     display: flex;
     flex-flow: column;
     margin: 0 auto;
-    width: 90%;
+    // width: 90%;
 `;
 const Name = styled.h5`
     margin: 38px 0 10px 0;

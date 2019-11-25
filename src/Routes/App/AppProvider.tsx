@@ -1,28 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-apollo";
 import { GET_CATEGORIES } from "./AppQueries";
 
 interface IContext {
     categoriesData: IGetCategoriesResponse | undefined
+    isProgress: boolean;
+    handleProgress: (active: boolean) => any;
 }
 
 const InitContext: IContext = {
-    categoriesData: undefined
+    categoriesData: undefined,
+    isProgress: false,
+    handleProgress: () => {}
 };
 
 const AppContext: React.Context<IContext> = React.createContext<IContext>(InitContext);
 const useAppContext = () => React.useContext(AppContext);
 
 const useFetch = (): {value: IContext} => {
-    const {data: categoriesData} = useQuery<IGetCategoriesResponse, any>(GET_CATEGORIES, {
+    const [ isProgress, setIsProgress ] = useState<boolean>(false);
+    const { data: categoriesData } = useQuery<IGetCategoriesResponse, any>(GET_CATEGORIES, {
         onError: data => {
             console.log("Get Categories error: ", data);
         }
-    })
-
+    });
+    const handleProgress = (active: boolean) => {
+        setIsProgress(active);
+    }
+    
     return {
         value: {
-            categoriesData
+            categoriesData,
+            isProgress,            
+            handleProgress
         }
     }
 };

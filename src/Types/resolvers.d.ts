@@ -34,3 +34,18 @@ interface IGetProductResponse {
 interface IGetProductQueryVariables {
     id: string;
 }
+interface IGetSimilarProductsQueryVariables {
+    product_id: string;
+    categories_id: Array<string>;
+    skip: number;
+    first: number;
+}
+interface IGetSimilarProductsQueryResponse {
+    products: Array<T_Products>;
+}
+interface ICacheProductsSimilarProducts {
+    products: Array<T_Products>;
+}
+interface ICacheProducts {
+    similarProducts: ICacheProductsSimilarProducts;
+}

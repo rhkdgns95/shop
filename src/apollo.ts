@@ -8,6 +8,14 @@ const link: HttpLink = new HttpLink({
     uri: "https://api-euwest.graphcms.com/v1/cjmrqz1hg3g4001b9913bj7lk/master" // Uri 수정 예정.
 });
 
+cache.writeData({
+    data: {
+        similarProducts: { 
+            __typename: "SimilarProduct",
+            products: []
+        }
+    }
+})
 const client = new ApolloClient({
     cache,
     link,

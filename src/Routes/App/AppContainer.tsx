@@ -3,11 +3,13 @@ import { BrowserRouter, Switch, Redirect, Route, Router } from "react-router-dom
 import Home from '../Home';
 import AppProvider from './AppProvider';
 import Product from '../Product/ProductContainer';
+import Progressbar from '../../Components/Progressbar';
 
 const App = () => (
     <BrowserRouter>
         <AppProvider>
             <AppContainer />
+            <Progressbar />
         </AppProvider>
     </BrowserRouter>
 )
