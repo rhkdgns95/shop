@@ -1,8 +1,13 @@
 import React from "react";
 import HomePresenter from "./HomePresenter";
 import HomeProvider, { useHomeContext } from "./HomeProvider";
+import { RouteComponentProps } from "react-router";
 
-const Home = () => {
+interface IProps extends React.FC<RouteComponentProps> {
+
+}
+const Home: IProps = ({
+}) => {
     return (
         <HomeProvider>
             <HomeContainer />

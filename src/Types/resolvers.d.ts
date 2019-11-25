@@ -14,6 +14,10 @@ type T_Category = {
     id: string;
     name: string;
 }
+interface IUseInput {
+    value: string;
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
+}
 interface IGetProductsResponse {
     AllProducts: Array<T_Products>;
     Products: Array<T_Products>;
@@ -48,4 +52,10 @@ interface ICacheProductsSimilarProducts {
 }
 interface ICacheProducts {
     similarProducts: ICacheProductsSimilarProducts;
+}
+interface ISearchProductQueryVariables {
+    text: string;
+}
+interface ISearchProductQueryResponse {
+    products: Array<T_Products>
 }

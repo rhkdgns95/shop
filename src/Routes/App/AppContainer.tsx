@@ -4,6 +4,7 @@ import Home from '../Home';
 import AppProvider from './AppProvider';
 import Product from '../Product/ProductContainer';
 import Progressbar from '../../Components/Progressbar';
+import Search from '../Search';
 
 const App = () => (
     <BrowserRouter>
@@ -18,6 +19,7 @@ const AppContainer = () => (
     <Switch>
         <Route path={"/"} component={Home} exact/>
         <Route path={"/product/:product_id"} component={Product} />
+        <Route path={"/search"} component={Search}/>
         <Redirect from={"*"} to={"/"} />
     </Switch>
 )

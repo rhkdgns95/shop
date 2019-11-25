@@ -7,6 +7,12 @@ import { useApolloClient } from "react-apollo";
 const Container = styled.div``;
 const Wrapper = styled.div`
     width: 100%;
+    margin-right: 12px;
+    max-width: 250px;
+    @media(max-width: 800px) {
+        max-width: 100%;
+        margin-right: 0;
+    }
 `;
 const Photo = styled.img`
     width: 100%;

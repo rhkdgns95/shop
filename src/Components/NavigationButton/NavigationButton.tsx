@@ -26,7 +26,7 @@ const Button = styled.button`
     padding: 10px 15.5px;
     width: 100%;
     height: 100%;
-    background-color: white;
+    background-color: ${props => props.theme.bgColor};
     color: #c89538;
     border-radius: inherit;
     transition: background-color .2s;

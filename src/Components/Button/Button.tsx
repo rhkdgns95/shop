@@ -9,9 +9,9 @@ const CustomButton = styled.button`
     border-radius: 5px;
     color: #777777;
     font-size: 16px;
-    padding: 6px 12px;
+    padding: 9px 15px;
     cursor: pointer;
-    background-color: #ececec;
+    background-color: inherit;
     &:focus,
     &:active {
         outline: none;

@@ -7,8 +7,6 @@ import NavBar from "../../Components/NavBar";
 import Button from "../../Components/Button";
 import { Link } from "react-router-dom";
 import { useApolloClient } from "react-apollo";
-import { gql } from "apollo-boost";
-import { FRAGMENT_PRODUCT } from "../../fragment";
 import { GET_CACHE_SIMILAR_PRODUCTS } from "./ProductQueries";
 import ButtonMore from "../../Components/ButtonMore";
 import PhotoOthers from "../../Components/PhotoOthers";
@@ -61,15 +59,12 @@ const SimilarPhotoBox = styled.div`
     margin: 0 auto;
     display: flex;
     flex-flow: row wrap;
+    @media(max-width: 800px) {
+        justify-content: center;
+    }
 `;
 const PhotoOthersExtended = styled(PhotoOthers)`
     // margin: 12px;
-    margin-right: 12px;
-    max-width: 250px;
-    @media(max-width: 800px) {
-        max-width: 100%;
-        margin-right: 0;
-    }
 `;
 const RelatedHeader = styled.div`
     display: flex;
