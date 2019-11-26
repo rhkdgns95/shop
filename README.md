@@ -10,6 +10,8 @@
 - [x] ProductContainer - Pagination Similarly Products, AppProvider - Add Progressbar.
 - [x] NavBar - Navigation Button, Add row class.
 - [x] SearchContainer - Search Product Title and Description.   
+- [x] PWA - Simple Settings.
+
 
 ## 2. Install
 - 2.1) yarn create react-app . --typescript

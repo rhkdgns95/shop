@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "../../Styles/typed-components";
+import { useApolloClient } from "react-apollo";
 
 const Container = styled.div`
 
@@ -47,7 +48,7 @@ const InfoProduct: React.FC<IProps> = ({
     detail,
     price
 }) => {
-
+    
     return (
         <Container>
             <Wrapper>

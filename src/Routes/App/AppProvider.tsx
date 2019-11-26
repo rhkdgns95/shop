@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useQuery } from "react-apollo";
 import { GET_CATEGORIES } from "./AppQueries";
+import convertDataURIToBinary from "../../Lib/base64";
 
 interface IContext {
     categoriesData: IGetCategoriesResponse | undefined
