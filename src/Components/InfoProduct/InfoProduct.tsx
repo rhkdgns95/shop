@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "../../Styles/typed-components";
-import { useApolloClient } from "react-apollo";
+import { useAppContext } from "../../Routes/App/AppProvider";
+import LongButton from "../LongButton";
 
 const Container = styled.div`
 
@@ -29,26 +30,33 @@ const Detail = styled.p`
     margin-bottom: 10px;
     font-size: 15px;
 `;
-const CartButton = styled.button`
-    display: block;
-    margin-top: 28px;
-    padding: 10px;
-    background-color: black;
-    color: white;
+const LongButtonExtended = styled(LongButton)`
+    background-color: ${props => props.theme.blueColor};
+    &:active,
+    &:focus {
+        outline: 0;
+        box-shadow: none;
+    }
+    &.active {
+        background-color: ${props => props.theme.redColor};
+    }
+
 `;
 
 interface IProps {
     name: string;
     detail: string;
     price: number;
-
+    id: string;
 }
 const InfoProduct: React.FC<IProps> = ({
     name,
     detail,
-    price
+    price,
+    id
 }) => {
-    
+    const { toggleCart, carts } = useAppContext();
+    const onCart = carts.find(product => product.id === id);
     return (
         <Container>
             <Wrapper>
@@ -58,7 +66,17 @@ const InfoProduct: React.FC<IProps> = ({
                     <PriceIcon>$</PriceIcon>
                     { price }00
                 </Price>
-                <CartButton>Add To Cart</CartButton>
+                <LongButtonExtended
+                    className={`toggle-cart-button ${onCart ? "active" : ""}`} 
+                    onClick={ () => {
+                        toggleCart({
+                            variables: {
+                                id
+                            }
+                        })
+                    }}
+                    value={ onCart ? `Remove from cart` : `Add to cart` }
+                />
             </Wrapper>
         </Container>
     )

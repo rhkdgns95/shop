@@ -16,10 +16,11 @@ const Wrapper = styled.div`
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    & > div {
+        flex: 1;
+    }
     @media(max-width: 800px) {
-        flex: 2;
         & > div {
-            flex: 1;
             margin-bottom: 10px;
         }
     }

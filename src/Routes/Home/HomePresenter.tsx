@@ -32,7 +32,7 @@ interface IProps {
 const HomePresenter: React.FC<IProps> = ({
     products
 }) => {
-    const { categoriesData, handleProgress } = useAppContext();
+    const { categoriesData, handleProgress, carts } = useAppContext();
     const { onClickCategory } = useHomeContext();
     return (
         <Container>
@@ -54,7 +54,7 @@ const HomePresenter: React.FC<IProps> = ({
                         }
                         rightMenu={
                             <Button
-                                value={"Cart"}
+                                value={`Cart (${carts.length})`}
                                 path={"/cart"}
                             />
                         }

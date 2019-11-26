@@ -15,5 +15,6 @@ export const FRAGMENT_PRODUCT = gql`
         }
         price
         createdAt
+        onCart @client
     }
 `;

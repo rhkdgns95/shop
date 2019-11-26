@@ -1,4 +1,4 @@
-type T_Products = {
+type T_Product = {
     id: string,
     name: string,
     detail: string,
@@ -7,8 +7,9 @@ type T_Products = {
         url: string
     },
     price: number,
-    createdAt: string
-    category: Array<T_Category>
+    createdAt: string,
+    category: Array<T_Category>,
+    onCart: boolean
 };
 type T_Category = {
     id: string;
@@ -19,8 +20,8 @@ interface IUseInput {
     onChange: (event: React.ChangeEvent<HTMLInputElement>) => any;
 }
 interface IGetProductsResponse {
-    AllProducts: Array<T_Products>;
-    Products: Array<T_Products>;
+    AllProducts: Array<T_Product>;
+    Products: Array<T_Product>;
 }
 interface IGetProductsQueryVariables {
     id: string | undefined
@@ -33,7 +34,7 @@ interface IGetCategoriesResponse {
     categories: Array<T_Categories>
 }
 interface IGetProductResponse {
-    product: T_Products | undefined;
+    product: T_Product | undefined;
 }
 interface IGetProductQueryVariables {
     id: string;
@@ -45,10 +46,10 @@ interface IGetSimilarProductsQueryVariables {
     first: number;
 }
 interface IGetSimilarProductsQueryResponse {
-    products: Array<T_Products>;
+    products: Array<T_Product>;
 }
 interface ICacheProductsSimilarProducts {
-    products: Array<T_Products>;
+    products: Array<T_Product>;
 }
 interface ICacheProducts {
     similarProducts: ICacheProductsSimilarProducts;
@@ -57,5 +58,11 @@ interface ISearchProductQueryVariables {
     text: string;
 }
 interface ISearchProductQueryResponse {
-    products: Array<T_Products>
+    products: Array<T_Product>
+}
+interface IToggleCartMutationVariables {
+    id: string
+}
+interface IGetCartsQueryResponse {
+    cart: Array<T_Product>;
 }

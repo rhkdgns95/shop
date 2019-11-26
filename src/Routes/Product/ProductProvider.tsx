@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useQuery, useLazyQuery, useApolloClient } from "react-apollo";
+import { useQuery, useLazyQuery, useApolloClient, useMutation } from "react-apollo";
 import { GET_PRODUCT, GET_SIMILAR_PRODUCTS, GET_CACHE_SIMILAR_PRODUCTS } from "./ProductQueries";
 import { useAppContext } from "../App/AppProvider";
 
@@ -7,30 +7,29 @@ interface IProductCotext {
     queryProductData: IGetProductResponse | undefined;
     handleSimilarProducts: (data: IGetProductResponse) => any;
     pagination: number;
-    loadingSimilarQueryProducts: boolean;
+    loadingSimilarQueryProducts: boolean;    
 }
 const PaginationCount: number = 2;
 const InitProductContext: IProductCotext = {
     queryProductData: undefined,
     handleSimilarProducts: () => {},
     pagination: 0,
-    loadingSimilarQueryProducts: true
+    loadingSimilarQueryProducts: true,
 };
 const ProductContext: React.Context<IProductCotext> = React.createContext<IProductCotext>(InitProductContext);
-const useProductProvider = () => React.useContext(ProductContext);
+const useProductContext = () => React.useContext(ProductContext);
 
 const useFetch = (productId: string): { value: IProductCotext } => {
     const { isProgress, handleProgress } = useAppContext();
     const { cache } = useApolloClient();
     const [ pagination, setPagination ] = useState(0);
-    console.log("PAGINATION: ", pagination);
 
     const [ getSimilarProducts, { data: querySimilarProducts, loading: loadingSimilarQueryProducts }] = useLazyQuery<IGetSimilarProductsQueryResponse, IGetSimilarProductsQueryVariables>(GET_SIMILAR_PRODUCTS, {
         onError: data => {
             console.log("GetSimilarProducts Error: ", data)
         },
         onCompleted: (data) => {
-            console.log("GET similar Datas: ", data);
+            // console.log("GET similar Datas: ", data);
             // 검색할 갯수이하라면, 
             // 비슷한 상품검색을 전부한것이므로, -1로 만들어주고, 
             // 상품검색하는 버튼을 제거해주도록 한다.
@@ -41,7 +40,7 @@ const useFetch = (productId: string): { value: IProductCotext } => {
             // newProducts
             // 마지막 값하나를 빼준다. 왜냐하면 N+1개씩 불러와서 
             // 다음값이 있는지 없는지확인을 하기위한용도이다.
-            let newProducts: Array<T_Products> = data.products.filter((product, key) => key !== PaginationCount);
+            let newProducts: Array<T_Product> = data.products.filter((product, key) => key !== PaginationCount);
 
             // cacheData에 이미 존재하는 데이터가있다면, 합칠필요가 있다.
             if(cacheData && 
@@ -147,7 +146,7 @@ const useFetch = (productId: string): { value: IProductCotext } => {
             queryProductData,
             handleSimilarProducts,
             pagination,
-            loadingSimilarQueryProducts
+            loadingSimilarQueryProducts,
         }
     }
 };
@@ -163,5 +162,5 @@ const ProductProvider: React.FC<any> = ({
     </ProductContext.Provider>
 );
 
-export { useProductProvider };
+export { useProductContext };
 export default ProductProvider;

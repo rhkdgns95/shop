@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "../../Styles/typed-components";
-import { useProductProvider } from "./ProductProvider";
+import { useProductContext } from "./ProductProvider";
 import PhotoProduct from "../../Components/PhotoProduct/PhotoProduct";
 import InfoProduct from "../../Components/InfoProduct";
 import NavBar from "../../Components/NavBar";
@@ -85,14 +85,15 @@ const ButtonMoreExtended = styled(ButtonMore)`
 
 const ProductPresenter = () => {
     const { cache } = useApolloClient();
-    const { handleProgress } = useAppContext();
+    const { handleProgress, carts } = useAppContext();
 
     const cacheProducts: ICacheProducts | null = cache.readQuery({
         query: GET_CACHE_SIMILAR_PRODUCTS
     });
-    const { queryProductData, handleSimilarProducts, pagination, loadingSimilarQueryProducts } = useProductProvider();
-    const product: T_Products | undefined = queryProductData ? queryProductData.product : undefined;
-    const similarProducts: Array<T_Products> | undefined = cacheProducts ? cacheProducts.similarProducts.products : undefined;
+
+    const { queryProductData, handleSimilarProducts, pagination, loadingSimilarQueryProducts } = useProductContext();
+    const product: T_Product | undefined = queryProductData ? queryProductData.product : undefined;
+    const similarProducts: Array<T_Product> | undefined = cacheProducts ? cacheProducts.similarProducts.products : undefined;
     return (
         <Container>
             <NavBar 
@@ -108,7 +109,7 @@ const ProductPresenter = () => {
                 }
                 rightMenu={
                     <Button
-                        value={"Cart"}
+                        value={`Cart (${ carts.length })`}
                         path={"/cart"}
                     />
                 }
@@ -129,12 +130,13 @@ const ProductPresenter = () => {
                                 imgPath={product.photo.url}
                             />
                             <InfoProduct 
+                                id={product.id}
                                 name={product.name}
                                 detail={product.detail}
                                 price={product.price}
+                                // onCart={product.onCart}
                             />
                         </Wrapper>
-                        
                         {
                             queryProductData && (
                                 <SimilarProducts>

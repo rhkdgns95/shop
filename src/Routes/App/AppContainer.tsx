@@ -5,6 +5,7 @@ import AppProvider from './AppProvider';
 import Product from '../Product/ProductContainer';
 import Progressbar from '../../Components/Progressbar';
 import Search from '../Search';
+import Cart from '../Cart';
 
 const App = () => (
     <BrowserRouter>
@@ -20,6 +21,7 @@ const AppContainer = () => (
         <Route path={"/"} component={Home} exact/>
         <Route path={"/product/:product_id"} component={Product} />
         <Route path={"/search"} component={Search}/>
+        <Route path={"/cart"} component={Cart}/>
         <Redirect from={"*"} to={"/"} />
     </Switch>
 )

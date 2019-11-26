@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import ProductPresenter from "./ProductPresenter";
-import ProductProvider, { useProductProvider } from "./ProductProvider";
+import ProductProvider from "./ProductProvider";
 import { RouteComponentProps } from "react-router";
-import { useAppContext } from "../App/AppProvider";
 
 interface IProps extends RouteComponentProps<any, any>{
 

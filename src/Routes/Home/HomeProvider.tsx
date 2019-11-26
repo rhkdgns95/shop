@@ -22,14 +22,14 @@ const useFetch = (): { value: IHomeContext } => {
     const onClickCategory = (id: string) => {
         setCategoryId(id);
     }
-
+    
     const { data: productsData } = useQuery<IGetProductsResponse, IGetProductsQueryVariables>(GET_PRODUCTS, {
         variables: {
             id: categoryId !== "" ? categoryId: undefined
         },
         onError: data => {
             console.log("GET_PRODUCTS error: ", data);
-        },
+        }
     });
     return {
         value: {
